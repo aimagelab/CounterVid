@@ -3,12 +3,13 @@
 ### Counterfactual Video Generation for Mitigating Action and Temporal Hallucinations in Video-Language Models
 
 [![EMNLP 2026](https://img.shields.io/badge/EMNLP-2026-8c1b13.svg)](https://2026.emnlp.org/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-CounterVid-FFD21E)](https://huggingface.co/collections/aimagelab/countervid)
 
 Official repository for **CounterVid**, accepted at **EMNLP 2026** (Main Conference).
 
 > **Internship project.** This research was conducted during [Tobia Poppi](https://tobiapoppi.github.io/)'s Applied Scientist internship at Amazon, with the Amazon Prime Video team in Seattle.
 
-> Code, data, model checkpoints, and usage instructions will be released here.
+> The CounterVid dataset and trained model checkpoints are available on Hugging Face.
 
 ## Overview
 
@@ -30,14 +31,34 @@ CounterVid starts from a representative frame and proposes plausible alternative
 
 MixDPO optimizes both signals jointly, encouraging output grounding and sensitivity to fine-grained visual evidence.
 
-## Release status
+## Releases
 
 | Resource | Status |
 | --- | --- |
 | Paper | Coming soon |
 | Training and evaluation code | Coming soon |
-| CounterVid preference data | Coming soon |
-| Model checkpoints | Coming soon |
+| CounterVid preference data | [Available on Hugging Face](https://huggingface.co/datasets/aimagelab/CounterVid) |
+| Model checkpoints | Available on Hugging Face (see below) |
+
+### Dataset
+
+The [CounterVid dataset](https://huggingface.co/datasets/aimagelab/CounterVid) contains 26,167 training preference pairs and a separate held-out split with 2,910 examples. It can be loaded directly with 🤗 Datasets:
+
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("aimagelab/CounterVid")
+```
+
+### Models
+
+| Model | Base model | Checkpoint |
+| --- | --- | --- |
+| CounterVid Qwen2.5-VL-3B | Qwen2.5-VL-3B-Instruct | [Hugging Face](https://huggingface.co/aimagelab/CounterVid-Qwen2.5-VL-3B-LoRA) |
+| CounterVid Qwen2.5-VL-7B | Qwen2.5-VL-7B-Instruct | [Hugging Face](https://huggingface.co/aimagelab/CounterVid-Qwen2.5-VL-7B-LoRA) |
+| CounterVid InternVL3-9B | InternVL3-9B-Instruct | [Hugging Face](https://huggingface.co/aimagelab/CounterVid-InternVL3-9B-LoRA) |
+
+The released checkpoints contain merged weights and can be loaded as standalone models without PEFT. Model-specific loading instructions are provided in each Hugging Face model card.
 
 ## Citation
 
