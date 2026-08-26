@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071d26" />
+    <meta
+      name="description"
+      content="CounterVid generates controlled counterfactual videos and jointly learns from textual and visual preferences to mitigate action and temporal hallucinations in video-language models."
+    />
+    <meta property="og:title" content="CounterVid — Counterfactual Video Generation" />
+    <meta
+      property="og:description"
+      content="Mitigating action and temporal hallucinations in video-language models with counterfactual video generation and MixDPO."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aimagelab.github.io/CounterVid/" />
+    <meta property="og:image" content="https://aimagelab.github.io/CounterVid/assets/og.png" />
+    <meta property="og:image:width" content="1731" />
+    <meta property="og:image:height" content="909" />
+    <meta property="og:image:alt" content="CounterVid — Counterfactual Video Generation for Grounded VLMs" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CounterVid — Counterfactual Video Generation" />
+    <meta
+      name="twitter:description"
+      content="Mitigating action and temporal hallucinations in video-language models with counterfactual video generation and MixDPO."
+    />
+    <meta name="twitter:image" content="https://aimagelab.github.io/CounterVid/assets/og.png" />
+    <link rel="canonical" href="https://aimagelab.github.io/CounterVid/" />
+    <title>CounterVid — Counterfactual Video Generation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="nav-wrap">
+        <a class="brand" href="#top" aria-label="CounterVid home">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>CounterVid</span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span></span><span></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a href="#overview">Overview</a>
+          <a href="#method">Method</a>
+          <a href="#dataset">Dataset</a>
+          <a href="#results">Results</a>
+          <a href="#citation">Citation</a>
+          <a class="nav-cta" href="https://github.com/aimagelab/CounterVid" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow-row reveal">
+              <span class="venue-pill">EMNLP 2026</span>
+              <span class="eyebrow">Video grounding · Preference learning</span>
+            </div>
+            <h1 class="reveal delay-1">
+              Counterfactual videos<br />
+              <span>for grounded VLMs.</span>
+            </h1>
+            <p class="hero-lede reveal delay-2">
+              CounterVid creates controlled counterfactual videos that differ in action or temporal order—then uses them to teach video-language models to trust visual evidence over language priors.
+            </p>
+            <div class="hero-actions reveal delay-3">
+              <a class="button button-primary" href="https://arxiv.org/abs/2601.04778" target="_blank" rel="noreferrer">
+                Read the paper <span aria-hidden="true">↗</span>
+              </a>
+              <a class="button button-secondary" href="https://github.com/aimagelab/CounterVid" target="_blank" rel="noreferrer">
+                Project repository <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <p class="availability reveal delay-3"><span></span> Code, data, and checkpoints coming soon</p>
+          </div>
+
+          <div class="hero-visual reveal delay-2">
+            <div class="visual-window">
+              <div class="window-bar">
+                <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>counterfactual_pair_017</span>
+                <span class="live-chip"><i></i> grounded</span>
+              </div>
+              <img src="assets/teaser.png" alt="CounterVid preference generation and learning pipeline" />
+            </div>
+            <div class="visual-legend" aria-label="Visual preference pair">
+              <span class="legend-token legend-positive">V<sup>+</sup></span>
+              <span>preferred video</span>
+              <i>versus</i>
+              <span class="legend-token legend-negative">V<sup>−</sup></span>
+              <span>counterfactual video</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="authors reveal delay-3">
+          <p>
+            <a href="https://tobiapoppi.github.io/" target="_blank" rel="noreferrer">Tobia Poppi</a><sup>1,2,3</sup>,
+            Burak Uzkent<sup>1</sup>, Amanmeet Garg<sup>1</sup>, Lucas Porto<sup>1</sup>, Garin Kessler<sup>1</sup>, Yezhou Yang<sup>1</sup>,<br />
+            Marcella Cornia<sup>2</sup>, Lorenzo Baraldi<sup>2</sup>, Rita Cucchiara<sup>2</sup>, Florian Schiffers<sup>1</sup>
+          </p>
+          <div class="affiliations">
+            <a class="affiliation" href="https://www.amazon.science/" target="_blank" rel="noreferrer">
+              <img src="assets/logos/amazon.png" alt="" />
+              <span><b>1</b> Amazon Prime Video</span>
+            </a>
+            <a class="affiliation" href="https://www.unimore.it/" target="_blank" rel="noreferrer">
+              <img src="assets/logos/unimore.svg" alt="" />
+              <span><b>2</b> University of Modena and Reggio Emilia</span>
+            </a>
+            <a class="affiliation" href="https://www.unipi.it/" target="_blank" rel="noreferrer">
+              <img src="assets/logos/unipi.png" alt="" />
+              <span><b>3</b> University of Pisa</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="overview">
+        <div class="section-heading">
+          <p class="section-kicker">The problem</p>
+          <h2>A model can name every object<br />and still miss <em>what happened.</em></h2>
+          <p>
+            Strong VLMs often infer actions and event order from linguistic plausibility instead of fine-grained motion. CounterVid turns those near-miss cases into supervision.
+          </p>
+        </div>
+
+        <div class="failure-grid">
+          <article class="failure-card failure-action">
+            <div class="card-index">01</div>
+            <div class="failure-icon" aria-hidden="true"><span>▶</span><i></i></div>
+            <h3>Action misidentification</h3>
+            <p>The scene is right, but the action is wrong. Semantically matched clips force the model to attend to motion rather than static context.</p>
+            <div class="micro-example">
+              <span class="chosen">opens the phone</span>
+              <span class="not-equal">≠</span>
+              <span class="rejected">closes the laptop</span>
+            </div>
+          </article>
+          <article class="failure-card failure-time">
+            <div class="card-index">02</div>
+            <div class="failure-icon timeline-icon" aria-hidden="true"><span>A</span><i></i><span>B</span></div>
+            <h3>Temporal misordering</h3>
+            <p>The events are present, but their order is not. Controlled permutations isolate whether the model actually follows the timeline.</p>
+            <div class="micro-example">
+              <span class="chosen">A → B → C</span>
+              <span class="not-equal">≠</span>
+              <span class="rejected">B → C → A</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="abstract-block">
+          <p class="section-kicker">Abstract</p>
+          <p>
+            Video-language models achieve strong multimodal understanding but remain prone to hallucinations, especially when reasoning about actions and temporal order. We introduce a scalable framework that synthesizes videos differing only in action dynamics or temporal structure while preserving scene context. From these controlled counterfactuals, we build CounterVid and train with MixDPO—a unified objective combining textual and visual preferences—to improve grounding and temporal sensitivity across VLM families.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="method">
+        <div class="section-heading heading-dark">
+          <p class="section-kicker">Generation pipeline</p>
+          <h2>One scene.<br />Many plausible actions.</h2>
+          <p>One anchor frame becomes a family of plausible, same-scene action videos—semantic hard negatives built for fine-grained visual reasoning.</p>
+        </div>
+
+        <div class="pipeline-figure figure-shell">
+          <img src="assets/pipeline.png" alt="Four-stage CounterVid generation pipeline" loading="lazy" />
+        </div>
+
+        <ol class="step-grid">
+          <li>
+            <span>01</span>
+            <h3>Find the anchor</h3>
+            <p>Coarse-to-fine frame retrieval selects a representative, caption-aligned starting state.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Propose alternatives</h3>
+            <p>A multimodal LLM suggests plausible, distinct, and visually expressible actions.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Generate the motion</h3>
+            <p>Image editing creates end states; image-to-video diffusion connects them coherently.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <h3>Format the tasks</h3>
+            <p>Clips become action-recognition and temporal-ordering preference pairs at scale.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section section-mix" id="mixdpo">
+        <div class="mix-intro">
+          <div>
+            <p class="section-kicker">MixDPO</p>
+            <h2>Teach both sides<br />of visual grounding.</h2>
+          </div>
+          <p>
+            A grounded model should choose the right answer for a video—and assign that answer to the right video. MixDPO optimizes both directions in one objective.
+          </p>
+        </div>
+
+        <div class="preference-grid">
+          <article class="preference-card text-pref">
+            <div class="pref-topline">
+              <span class="pref-tag">t-pref</span>
+              <span>Fixed video</span>
+            </div>
+            <h3>Textual preference</h3>
+            <p>Prefer a grounded answer over a plausible but visually unsupported answer under the same video.</p>
+            <div class="pref-diagram">
+              <div class="fixed-token"><span>V</span><small>video</small></div>
+              <div class="branch-lines" aria-hidden="true"></div>
+              <div class="choices">
+                <span class="choice-positive">A<sup>+</sup> <i>grounded</i></span>
+                <span class="choice-negative">A<sup>−</sup> <i>hallucinated</i></span>
+              </div>
+            </div>
+          </article>
+          <article class="preference-card visual-pref">
+            <div class="pref-topline">
+              <span class="pref-tag">v-pref</span>
+              <span>Fixed text</span>
+            </div>
+            <h3>Visual preference</h3>
+            <p>Prefer the correct visual evidence over a same-scene counterfactual for the same question and answer.</p>
+            <div class="pref-diagram reverse">
+              <div class="choices">
+                <span class="choice-positive">V<sup>+</sup> <i>correct</i></span>
+                <span class="choice-negative">V<sup>−</sup> <i>counterfactual</i></span>
+              </div>
+              <div class="branch-lines" aria-hidden="true"></div>
+              <div class="fixed-token"><span>Q,A</span><small>text</small></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="equation-strip">
+          <span class="equation-label">Unified objective</span>
+          <p>ℒ<sub>MixDPO</sub> = ℒ<sub>t-pref</sub> + λ ℒ<sub>v-pref</sub></p>
+          <span class="equation-note">output grounding + input sensitivity</span>
+        </div>
+      </section>
+
+      <section class="section section-light" id="dataset">
+        <div class="section-heading dataset-heading">
+          <div>
+            <p class="section-kicker">CounterVid dataset</p>
+            <h2>Controlled contrast,<br />at synthetic scale.</h2>
+          </div>
+          <div class="dataset-summary">
+            <p>Approximately 26K preference pairs built entirely from synthetic clips with controlled action variations.</p>
+            <div class="format-chips" aria-label="Dataset task formats">
+              <span>Free-form</span><span>Binary</span><span>Multiple choice</span><span>Order list</span>
+            </div>
+          </div>
+        </div>
+
+        <figure class="figure-shell dataset-figure">
+          <img src="assets/dataset.png" alt="Qualitative CounterVid dataset samples for action recognition and temporal ordering" loading="lazy" />
+          <figcaption>Action recognition and temporal ordering across four complementary task formats.</figcaption>
+        </figure>
+
+        <div class="signal-row">
+          <div><span class="signal-dot green"></span><strong>Chosen</strong><small>visually grounded</small></div>
+          <div><span class="signal-dot coral"></span><strong>Rejected</strong><small>semantically plausible</small></div>
+        </div>
+      </section>
+
+      <section class="section section-results" id="results">
+        <div class="results-copy">
+          <p class="section-kicker">Results</p>
+          <h2>More sensitive to motion.<br />Less tempted by priors.</h2>
+          <p>
+            Across Qwen2.5-VL and InternVL3 backbones, MixDPO improves action recognition and temporal ordering, transfers positively to standard video hallucination benchmarks, and largely preserves general video understanding.
+          </p>
+          <div class="model-tags"><span>Qwen2.5-VL</span><span>InternVL3</span></div>
+        </div>
+        <figure class="results-figure">
+          <img src="assets/results.png" alt="Qualitative examples comparing baseline and CounterVid-aligned model predictions" loading="lazy" />
+          <figcaption>Qualitative examples: MixDPO corrects action and sequence errors missed by the base and text-only preference models.</figcaption>
+        </figure>
+      </section>
+
+      <section class="section internship-section">
+        <div class="internship-mark" aria-hidden="true">SEA</div>
+        <div>
+          <p class="section-kicker">Research story</p>
+          <h2>Built during an internship<br />at Amazon Prime Video.</h2>
+          <p>
+            This research was conducted during
+            <a href="https://tobiapoppi.github.io/" target="_blank" rel="noreferrer">Tobia Poppi</a>'s Applied Scientist internship with the Amazon Prime Video team in Seattle.
+          </p>
+          <a class="text-link" href="https://github.com/tobiapoppi/" target="_blank" rel="noreferrer">Tobia on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="section citation-section" id="citation">
+        <div class="citation-heading">
+          <p class="section-kicker">Citation</p>
+          <h2>Build on CounterVid.</h2>
+          <p>If this work helps your research, please cite the paper.</p>
+        </div>
+        <div class="citation-card">
+          <button class="copy-button" type="button" data-copy aria-label="Copy BibTeX citation">
+            <span data-copy-label aria-live="polite">Copy BibTeX</span>
+          </button>
+          <pre><code data-citation>@inproceedings{poppi2026countervid,
+  title     = {{CounterVid}: Counterfactual Video Generation for
+               Mitigating Action and Temporal Hallucinations in
+               Video-Language Models},
+  author    = {Poppi, Tobia and Uzkent, Burak and Garg, Amanmeet and
+               Porto, Lucas and Kessler, Garin and Yang, Yezhou and
+               Cornia, Marcella and Baraldi, Lorenzo and Cucchiara,
+               Rita and Schiffers, Florian},
+  booktitle = {Proceedings of EMNLP},
+  year      = {2026}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>CounterVid</span>
+      </a>
+      <p>Counterfactual video generation for visually grounded VLMs.</p>
+      <div class="footer-links">
+        <a href="https://arxiv.org/abs/2601.04778" target="_blank" rel="noreferrer">Paper</a>
+        <a href="https://github.com/aimagelab/CounterVid" target="_blank" rel="noreferrer">Repository</a>
+        <a href="https://tobiapoppi.github.io/" target="_blank" rel="noreferrer">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>
