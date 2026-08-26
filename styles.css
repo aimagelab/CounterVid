@@ -341,6 +341,10 @@ h1 span {
   background: rgba(255, 255, 255, 0.35);
 }
 
+.button-hf {
+  background: var(--yellow);
+}
+
 .availability {
   display: flex;
   gap: 8px;
@@ -1047,6 +1051,10 @@ h1 span {
   font-size: 17px;
 }
 
+.dataset-link {
+  margin-top: 22px;
+}
+
 .format-chips,
 .model-tags {
   display: flex;
@@ -1055,13 +1063,14 @@ h1 span {
 }
 
 .format-chips span,
-.model-tags span {
+.model-tags a {
   padding: 6px 10px;
   border: 1px solid var(--ink);
   border-radius: 100px;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
+  text-decoration: none;
   text-transform: uppercase;
 }
 
@@ -1138,8 +1147,17 @@ h1 span {
   color: rgba(255, 255, 255, 0.72);
 }
 
-.model-tags span {
+.model-tags a {
+  color: var(--white);
   border-color: rgba(255, 255, 255, 0.5);
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.model-tags a:hover,
+.model-tags a:focus-visible {
+  color: var(--ink);
+  background: var(--white);
+  border-color: var(--white);
 }
 
 .results-figure {

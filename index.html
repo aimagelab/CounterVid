@@ -77,8 +77,11 @@
               <a class="button button-secondary" href="https://github.com/aimagelab/CounterVid" target="_blank" rel="noreferrer">
                 Project repository <span aria-hidden="true">↗</span>
               </a>
+              <a class="button button-hf" href="https://huggingface.co/collections/aimagelab/countervid" target="_blank" rel="noreferrer">
+                <span aria-hidden="true">🤗</span> Hugging Face <span aria-hidden="true">↗</span>
+              </a>
             </div>
-            <p class="availability reveal delay-3"><span></span> Code, data, and checkpoints coming soon</p>
+            <p class="availability reveal delay-3"><span></span> Dataset and three model checkpoints available now</p>
           </div>
 
           <div class="hero-visual reveal delay-2">
@@ -260,10 +263,13 @@
             <h2>Controlled contrast,<br />at synthetic scale.</h2>
           </div>
           <div class="dataset-summary">
-            <p>Approximately 26K preference pairs built entirely from synthetic clips with controlled action variations.</p>
+            <p>26,167 training preference pairs built from synthetic clips with controlled action variations, plus 2,910 held-out examples.</p>
             <div class="format-chips" aria-label="Dataset task formats">
               <span>Free-form</span><span>Binary</span><span>Multiple choice</span><span>Order list</span>
             </div>
+            <a class="button button-primary dataset-link" href="https://huggingface.co/datasets/aimagelab/CounterVid" target="_blank" rel="noreferrer">
+              Explore the dataset <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
 
@@ -285,7 +291,11 @@
           <p>
             Across Qwen2.5-VL and InternVL3 backbones, MixDPO improves action recognition and temporal ordering, transfers positively to standard video hallucination benchmarks, and largely preserves general video understanding.
           </p>
-          <div class="model-tags"><span>Qwen2.5-VL</span><span>InternVL3</span></div>
+          <div class="model-tags" aria-label="Released CounterVid checkpoints">
+            <a href="https://huggingface.co/aimagelab/CounterVid-Qwen2.5-VL-3B-LoRA" target="_blank" rel="noreferrer">Qwen2.5-VL 3B <span aria-hidden="true">↗</span></a>
+            <a href="https://huggingface.co/aimagelab/CounterVid-Qwen2.5-VL-7B-LoRA" target="_blank" rel="noreferrer">Qwen2.5-VL 7B <span aria-hidden="true">↗</span></a>
+            <a href="https://huggingface.co/aimagelab/CounterVid-InternVL3-9B-LoRA" target="_blank" rel="noreferrer">InternVL3 9B <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
         <figure class="results-figure">
           <img src="assets/results.png" alt="Qualitative examples comparing baseline and CounterVid-aligned model predictions" loading="lazy" />
@@ -340,6 +350,7 @@
       <div class="footer-links">
         <a href="https://arxiv.org/abs/2601.04778" target="_blank" rel="noreferrer">Paper</a>
         <a href="https://github.com/aimagelab/CounterVid" target="_blank" rel="noreferrer">Repository</a>
+        <a href="https://huggingface.co/collections/aimagelab/countervid" target="_blank" rel="noreferrer">Hugging Face</a>
         <a href="https://tobiapoppi.github.io/" target="_blank" rel="noreferrer">Contact</a>
       </div>
     </footer>
