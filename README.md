@@ -2,7 +2,7 @@
 
 ### Counterfactual Video Generation for Mitigating Action and Temporal Hallucinations in Video-Language Models
 
-[![EMNLP 2026](https://img.shields.io/badge/EMNLP-2026-8c1b13.svg)](https://2026.emnlp.org/)
+[![EMNLP 2026](https://img.shields.io/badge/EMNLP-2026-8c1b13.svg)](https://2026.emnlp.org/) [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2601.04778)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-CounterVid-FFD21E)](https://huggingface.co/collections/aimagelab/countervid)
 
 Official repository for **CounterVid**, accepted at **EMNLP 2026** (Main Conference).
